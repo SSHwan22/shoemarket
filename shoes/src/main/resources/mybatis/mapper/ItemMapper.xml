@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.market.shoes.model.dao.ItemMapper">
+	<resultMap id="itemResultSet" type="item">
+		<id column="ITEM_NO" property="itemNo"/>
+		<result column="ITEM_CODE" property="itemCode"/>		
+		<result column="NAME" property="name"/>		
+		<result column="PRICE" property="price"/>		
+	</resultMap>
+	
+	<select id="itemDetail" resultMap="itemResultSet">
+		SELECT * 
+		FROM ITEM
+		WHERE ITEM_NO = #{itemNo}
+	</select>
+</mapper>
