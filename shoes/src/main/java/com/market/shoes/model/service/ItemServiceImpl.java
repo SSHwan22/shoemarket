@@ -44,7 +44,7 @@ public class ItemServiceImpl implements ItemService{
 //					+itemList.get(i).getImgLocation());
 			itemList.get(i).setImgLocation("http://localhost:8080/img/"+itemList.get(i).getImgLocation());
 		}
-		return itemMapper.itemList();
+		return itemList;
 	}
 
 }
