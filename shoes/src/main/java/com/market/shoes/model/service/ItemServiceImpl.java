@@ -25,7 +25,7 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public List<Item> itemDetail(int itemNo) {
 		List<Item> item = itemMapper.itemDetail(itemNo);
-		item.get(0).setImgLocation("localhost:8080/img/nikeshoes1.jpg");
+		item.get(0).setImgLocation("/img/nikeshoes1.jpg");
 		System.out.println(item);
 		return item;
 	}
