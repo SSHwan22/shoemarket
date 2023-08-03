@@ -28,4 +28,9 @@ public class ItemController {
 	public String test() {
 		return new Gson().toJson(itemService.itemDetail(1));
 	}
+	
+	@GetMapping("/item")
+	public String itemList() {
+		return new Gson().toJson(itemService.itemList());
+	}
 }

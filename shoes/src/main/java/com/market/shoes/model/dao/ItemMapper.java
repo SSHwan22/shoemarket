@@ -13,4 +13,6 @@ public interface ItemMapper {
 
 	List<Item> itemDetail(int itemNo);
 
+	List<Item> itemList();
+
 }

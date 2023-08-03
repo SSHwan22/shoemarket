@@ -5,12 +5,18 @@
 		<id column="ITEM_NO" property="itemNo"/>
 		<result column="ITEM_CODE" property="itemCode"/>		
 		<result column="NAME" property="name"/>		
-		<result column="PRICE" property="price"/>		
+		<result column="PRICE" property="price"/>
+		<result column="IMG_LOCATION" property="imgLocation"/>
 	</resultMap>
 	
 	<select id="itemDetail" resultMap="itemResultSet">
 		SELECT * 
 		FROM ITEM
 		WHERE ITEM_NO = #{itemNo}
+	</select>
+	
+	<select id="itemList" resultMap="itemResultSet">
+		SELECT *
+		FROM ITEM
 	</select>
 </mapper>

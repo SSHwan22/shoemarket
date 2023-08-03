@@ -7,4 +7,6 @@ import com.market.shoes.model.vo.Item;
 public interface ItemService {
 
 	List<Item> itemDetail(int itemNo);
+
+	List<Item> itemList();
 }
