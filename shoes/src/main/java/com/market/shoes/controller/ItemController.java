@@ -1,6 +1,6 @@
 package com.market.shoes.controller;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +30,7 @@ public class ItemController {
 	}
 	
 	@GetMapping("/item")
-	public String itemList() {
-		return new Gson().toJson(itemService.itemList());
+	public String itemList(HttpServletRequest req) {
+		return new Gson().toJson(itemService.itemList(req));
 	}
 }

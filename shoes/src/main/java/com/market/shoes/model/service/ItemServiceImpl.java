@@ -14,7 +14,6 @@ import com.market.shoes.model.vo.Item;
 public class ItemServiceImpl implements ItemService{
 
 	private ItemMapper itemMapper;
-	private HttpServletRequest req;
 	
 	public ItemServiceImpl() {
 	}
@@ -28,23 +27,22 @@ public class ItemServiceImpl implements ItemService{
 	public List<Item> itemDetail(int itemNo) {
 		List<Item> item = itemMapper.itemDetail(itemNo);
 		item.get(0).setImgLocation("http://localhost:8080/img/nikeshoes1.jpg");
-		System.out.println(item);
 		return item;
 	}
 
 	@Override
-	public List<Item> itemList() {
-		
+	public List<Item> itemList(HttpServletRequest req) {
 		List<Item> itemList = itemMapper.itemList();
 		
 		for(int i=0; i<itemList.size(); i++) {
-//			itemList.get(i).setImgLocation(req.getScheme()+"://"
-//					+req.getServerName()+":"
-//					+req.getServerPort()+"/"
-//					+itemList.get(i).getImgLocation());
-			itemList.get(i).setImgLocation("http://localhost:8080/img/"+itemList.get(i).getImgLocation());
+			itemList.get(i).setImgLocation(req.getScheme()+"://"
+					+req.getServerName()+":"
+					+req.getServerPort()+"/img/"
+					+itemList.get(i).getImgLocation());
 		}
+		
 		return itemList;
 	}
+	
 
 }
