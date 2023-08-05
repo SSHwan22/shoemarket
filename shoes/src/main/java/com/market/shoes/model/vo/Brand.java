@@ -1,5 +1,9 @@
 package com.market.shoes.model.vo;
 
-public class Brand {
+import lombok.Data;
 
+@Data
+public class Brand {
+	private int brandNo;
+	private String name;
 }

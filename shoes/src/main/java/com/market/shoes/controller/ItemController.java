@@ -1,36 +1,47 @@
 package com.market.shoes.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.market.shoes.model.service.BrandService;
 import com.market.shoes.model.service.ItemService;
 
-@RestController
-public class ItemController {
+import lombok.RequiredArgsConstructor;
 
-	private ItemService itemService;
+@RestController
+@RequiredArgsConstructor
+public class ItemController {
 	
-	public ItemController() {
-		
-	}
-	
-	@Autowired
-	public ItemController(ItemService itemService) {
-		this.itemService = itemService;
-	}
-	
+	private final ItemService itemService;
+	private final BrandService brandService;
 	
 	@GetMapping("/api/test")
 	public String test() {
-		return new Gson().toJson(itemService.itemDetail(1));
+		
+		Map<String, List> map = new HashMap<>();
+		
+		map.put("item", itemService.itemDetail(1));
+		map.put("brand", brandService.brandList());
+		
+		
+		return new Gson().toJson(map);
 	}
 	
 	@GetMapping("/item")
 	public String itemList(HttpServletRequest req) {
-		return new Gson().toJson(itemService.itemList(req));
+		
+		Map<String, List> map = new HashMap<>();
+		
+		map.put("item", itemService.itemList(req));
+		map.put("brand", brandService.brandList());
+		
+		return new Gson().toJson(map);
 	}
 }
