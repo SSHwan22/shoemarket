@@ -1,4 +1,4 @@
-package com.market.shoes.model.service;
+package com.market.shoes.model.service.member;
 
 import com.market.shoes.model.vo.Member;
 

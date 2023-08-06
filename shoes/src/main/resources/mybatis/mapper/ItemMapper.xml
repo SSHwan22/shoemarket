@@ -7,6 +7,7 @@
 		<result column="NAME" property="name"/>		
 		<result column="PRICE" property="price"/>
 		<result column="IMG_LOCATION" property="imgLocation"/>
+		<result column="BRAND" property="brand"/>
 	</resultMap>
 	
 	<select id="itemDetail" resultMap="itemResultSet">
@@ -16,7 +17,14 @@
 	</select>
 	
 	<select id="itemList" resultMap="itemResultSet">
-		SELECT *
-		FROM ITEM
+		SELECT ITEM_NO, ITEM_CODE, i.NAME NAME, PRICE, IMG_LOCATION
+		<if test="brand != null and brand != 'All'"> 
+			,b.NAME BRAND
+		</if>
+		FROM ITEM i
+		<if test="brand != null and brand != 'All'">
+			JOIN BRAND b USING(BRAND_NO)
+			WHERE b.name = #{brand}
+		</if>
 	</select>
 </mapper>

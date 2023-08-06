@@ -1,4 +1,4 @@
-package com.market.shoes.model.service;
+package com.market.shoes.model.service.member;
 
 import org.springframework.stereotype.Service;
 

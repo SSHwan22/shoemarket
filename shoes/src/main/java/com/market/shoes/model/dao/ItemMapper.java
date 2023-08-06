@@ -11,8 +11,8 @@ import com.market.shoes.model.vo.Item;
 @Repository
 public interface ItemMapper {
 
-	List<Item> itemDetail(int itemNo);
-
-	List<Item> itemList();
-
+	List<Object> itemList(String brandName);
+	
+	Item itemDetail(int itemNo);
+	
 }

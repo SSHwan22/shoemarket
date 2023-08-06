@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BrandMapper {
 
-	List<String> brandList();
+	List<Object> brandList();
 
 }
