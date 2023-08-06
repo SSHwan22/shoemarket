@@ -25,7 +25,6 @@ public class ItemController {
 	
 	@GetMapping("/item")
 	public String itemList(HttpServletRequest req, @RequestParam(value="brand", required=false) String brand) {
-		System.out.println("-->"+brand);
 		return new Gson().toJson(itemService.shopPage(req, brand));
 	}
 	
