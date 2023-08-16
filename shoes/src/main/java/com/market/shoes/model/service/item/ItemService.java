@@ -11,5 +11,5 @@ public interface ItemService {
 
 	Map<String, List<Object>> shopPage(HttpServletRequest req, String brand);
 	
-	Item itemDetail(HttpServletRequest req, int itemNo);
+	Map<String, Object> itemDetail(HttpServletRequest req, int itemNo);
 }

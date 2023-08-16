@@ -10,11 +10,10 @@
 		<result column="BRAND" property="brand"/>
 	</resultMap>
 	
-	<select id="itemDetail" resultMap="itemResultSet">
-		SELECT * 
-		FROM ITEM
-		WHERE ITEM_NO = #{itemNo}
-	</select>
+	<resultMap id="itemSizeResultSet" type="itemSize">
+		<result column="SIZE" property="size"/>
+		<result column="STOCK" property="stock"/>
+	</resultMap>
 	
 	<select id="itemList" resultMap="itemResultSet">
 		SELECT ITEM_NO, ITEM_CODE, i.NAME NAME, PRICE, IMG_LOCATION
@@ -27,4 +26,18 @@
 			WHERE b.name = #{brand}
 		</if>
 	</select>
+	
+	<select id="itemDetail" resultMap="itemResultSet">
+		SELECT ITEM_NO, B.NAME AS BRAND,ITEM_CODE, I.NAME AS NAME, PRICE, IMG_LOCATION
+		FROM ITEM I
+		JOIN BRAND B USING(BRAND_NO)
+		WHERE I.ITEM_NO = 1
+	</select>
+	
+	<select id="itemSize" resultMap="itemSizeResultSet">
+		SELECT SIZE, STOCK
+		FROM STOCK
+		WHERE ITEM_NO = #{itemNo}
+	</select>
+	
 </mapper>

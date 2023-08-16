@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.market.shoes.model.dao.BrandMapper;
 import com.market.shoes.model.dao.ItemMapper;
 import com.market.shoes.model.vo.Item;
+import com.market.shoes.model.vo.ItemSize;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,8 +22,6 @@ public class ItemServiceImpl implements ItemService{
 	private final ItemMapper itemMapper;
 	private final BrandMapper brandMapper;
 	
-
-
 	@Override
 	public Map<String, List<Object>> shopPage(HttpServletRequest req, String brand) {
 		Map<String, List<Object>> map = new HashMap<>();
@@ -46,8 +45,9 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-	public Item itemDetail(HttpServletRequest req, int itemNo) {
+	public Map<String, Object> itemDetail(HttpServletRequest req, int itemNo) {
 		Item item = itemMapper.itemDetail(itemNo);
+		List<ItemSize> itemSize = itemMapper.itemSize(itemNo);
 		
 		item.setImgLocation(
 				req.getScheme()+"://"
@@ -56,7 +56,11 @@ public class ItemServiceImpl implements ItemService{
 				+item.getImgLocation()
 				);
 		
-		return item;
+		Map<String, Object> itemInfo = new HashMap<>();
+		itemInfo.put("item", item);
+		itemInfo.put("size", itemSize);
+		
+		return itemInfo;
 	}
 	
 
