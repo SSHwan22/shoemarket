@@ -9,5 +9,5 @@ import com.market.shoes.model.vo.Member;
 @Repository
 public interface MemberMapper {
 
-	String memberEnroll(Member m);
+	int memberEnroll(Member m);
 }

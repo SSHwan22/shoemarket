@@ -3,8 +3,13 @@
 <mapper namespace="com.market.shoes.model.dao.MemberMapper">
 	
 	<insert id="memberEnroll">
-		INSERT INTO MEMBER(
-			DEFAULT, #{id}, #{password}, #{name}, #{email}, #{phone}
+		INSERT INTO MEMBER
+		VALUES( DEFAULT
+				, #{userId}
+				, #{userPassword}
+				, #{userName}
+				, #{userEmail}
+				, #{userPhone} 
 		)
 	</insert>
 </mapper>

@@ -1,0 +1,15 @@
+server:
+  port: 8081
+  
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://52.78.124.171:3306/shoemarket?characterEncoding=euckr&useUnicode=true&mysqlEncoding=euckr
+    username: shoemarket
+    password: shoemarket@1234
+    
+mybatis:
+  config: mybatis/mybatis-config.xml
+  mapper-locations: mybatis/mapper/*.xml
+  type-aliases-package: com.market.shoes.model.vo
+

@@ -15,7 +15,12 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public String memberEnroll(Member m) {
-		return memberMapper.memberEnroll(m);
+		return String.valueOf(memberMapper.memberEnroll(m));
+	}
+
+	@Override
+	public String memberLogin() {
+		return null;
 	}
 
 	@Override

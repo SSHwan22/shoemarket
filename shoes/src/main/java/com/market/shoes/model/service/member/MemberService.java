@@ -5,6 +5,7 @@ import com.market.shoes.model.vo.Member;
 public interface MemberService {
 
 	String memberEnroll(Member m);
+	
 	String memberLogin(Member m);
 
 }
