@@ -19,13 +19,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public String memberLogin() {
-		return null;
-	}
-
-	@Override
-	public String memberLogin(Member m) {
-		return null;
+	public Member memberLogin(Member m) {
+		return memberMapper.memberLogin(m);
 	}
 	
 	

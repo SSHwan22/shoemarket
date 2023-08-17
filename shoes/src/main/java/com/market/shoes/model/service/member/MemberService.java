@@ -6,6 +6,5 @@ public interface MemberService {
 
 	String memberEnroll(Member m);
 	
-	String memberLogin(Member m);
-
+	Member memberLogin(Member m);
 }

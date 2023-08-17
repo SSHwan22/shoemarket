@@ -10,4 +10,6 @@ import com.market.shoes.model.vo.Member;
 public interface MemberMapper {
 
 	int memberEnroll(Member m);
+
+	Member memberLogin(Member m);
 }

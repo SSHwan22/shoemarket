@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.market.shoes.model.dao.MemberMapper">
+	<resultMap id="memberLoginResultSet" type="Member">
+		<id column="MEMBER_NO" property="userNo"/>
+		<result column="ID" property="userId"/>
+		<result column="PASSWWORD" property="userPassword"/>
+		<result column="NAME" property="userName"/>
+		<result column="EMAIL" property="userEmail"/>
+		<result column="PHONE" property="userPhone"/>
+	</resultMap>
 	
 	<insert id="memberEnroll">
 		INSERT INTO MEMBER
@@ -12,4 +20,11 @@
 				, #{userPhone} 
 		)
 	</insert>
+	
+	<select id="memberLogin" resultMap="memberLoginResultSet">
+		SELECT *
+		FROM MEMBER
+		WHERE ID = #{userId}
+		  AND PASSWORD = #{userPassword}
+	</select>
 </mapper>
