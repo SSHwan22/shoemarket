@@ -4,10 +4,6 @@
 	<resultMap id="memberLoginResultSet" type="Member">
 		<id column="MEMBER_NO" property="userNo"/>
 		<result column="ID" property="userId"/>
-		<result column="PASSWWORD" property="userPassword"/>
-		<result column="NAME" property="userName"/>
-		<result column="EMAIL" property="userEmail"/>
-		<result column="PHONE" property="userPhone"/>
 	</resultMap>
 	
 	<insert id="memberEnroll">
@@ -22,7 +18,7 @@
 	</insert>
 	
 	<select id="memberLogin" resultMap="memberLoginResultSet">
-		SELECT *
+		SELECT MEMBER_NO, ID
 		FROM MEMBER
 		WHERE ID = #{userId}
 		  AND PASSWORD = #{userPassword}

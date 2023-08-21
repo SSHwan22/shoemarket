@@ -31,7 +31,7 @@
 		SELECT ITEM_NO, B.NAME AS BRAND,ITEM_CODE, I.NAME AS NAME, PRICE, IMG_LOCATION
 		FROM ITEM I
 		JOIN BRAND B USING(BRAND_NO)
-		WHERE I.ITEM_NO = 1
+		WHERE I.ITEM_NO = #{itemNo}
 	</select>
 	
 	<select id="itemSize" resultMap="itemSizeResultSet">
