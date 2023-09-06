@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://52.78.124.171:3306/shoemarketjpa?characterEncoding=euckr&useUnicode=true&mysqlEncoding=euckr
+    username: shoemarketjpa
+    password: shoemarketjpa@1234
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true

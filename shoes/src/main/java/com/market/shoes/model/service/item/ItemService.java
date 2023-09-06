@@ -5,8 +5,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.market.shoes.model.vo.Item;
-
 public interface ItemService {
 
 	Map<String, List<Object>> shopPage(HttpServletRequest req, String brand);

@@ -10,7 +10,7 @@
 		<result column="COUNT" property="count" />
 		<result column="IMG_LOCATION" property="imgLocation" />
 	</resultMap>
-	<insert id="cartInsert">
+	<insert id="cartItemInsert">
 		INSERT INTO CART 
 		VALUES(#{userNo},#{itemNo}, #{itemSize}, #{itemCount})
 	</insert>
@@ -21,4 +21,11 @@
 		JOIN ITEM I USING(ITEM_NO)
 		WHERE MEMBER_NO = #{userNo};
 	</select>
+	
+	<delete id="cartItemDelete">
+		DELETE FROM CART
+		WHERE MEMBER_NO = #{userNo}
+		  AND ITEM_NO = #{itemNo} 
+		  AND SIZE = #{itemSize}
+	</delete>
 </mapper>

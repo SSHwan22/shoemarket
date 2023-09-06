@@ -7,9 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 
 import com.market.shoes.model.dao.CartMapper;
-import com.market.shoes.model.vo.CartInsertItem;
+import com.market.shoes.model.vo.CartItem;
 import com.market.shoes.model.vo.CartItemList;
-import com.market.shoes.model.vo.Item;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,8 +19,8 @@ public class CartServiceImp implements CartService{
 	private final CartMapper cartMapper;
 
 	@Override
-	public int cartInsert(CartInsertItem cartItem) {
-		return cartMapper.cartInsert(cartItem);
+	public int cartItemInsert(CartItem cartItem) {
+		return cartMapper.cartItemInsert(cartItem);
 	}
 
 	public List<CartItemList> cartList(HttpServletRequest req, String userNo) {
@@ -34,6 +33,11 @@ public class CartServiceImp implements CartService{
 		}
 		
 		return cartMapper.cartList(userNo);
+	}
+
+	@Override
+	public int cartItemDelete(CartItem cartItem) {
+		return cartMapper.cartItemDelete(cartItem);
 	}
 	
 	

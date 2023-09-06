@@ -14,7 +14,9 @@ import com.market.shoes.model.vo.Item;
 import com.market.shoes.model.vo.ItemSize;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ItemServiceImpl implements ItemService{
