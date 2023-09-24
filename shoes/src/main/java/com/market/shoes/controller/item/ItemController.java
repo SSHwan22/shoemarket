@@ -1,5 +1,8 @@
 package com.market.shoes.controller.item;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +27,8 @@ public class ItemController {
 	}
 	
 	@GetMapping("/item")
-	public String itemList(HttpServletRequest req, @RequestParam(value="brand", required=false) String brand) {
-		return new Gson().toJson(itemService.shopPage(req, brand));
+	public Map<String, List<Object>> itemList(HttpServletRequest req, @RequestParam(value="brand", required=false) String brand) {
+		return itemService.shopPage(req, brand);
 	}
 	
 	@GetMapping("/shop/{itemNo}")
