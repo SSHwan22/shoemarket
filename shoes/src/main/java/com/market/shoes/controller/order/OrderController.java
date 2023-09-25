@@ -1,12 +1,16 @@
 package com.market.shoes.controller.order;
 
-import java.util.Enumeration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.market.shoes.model.service.order.OrderService;
+import com.market.shoes.model.vo.Order;
+import com.market.shoes.model.vo.OrderItem;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,18 +21,15 @@ public class OrderController {
 
 	private OrderService orderService;
 	
-	@GetMapping("/cart/pay")
-	public void orderSave(HttpServletRequest request) {
-		System.out.println("order");
-		Enumeration e = request.getParameterNames();
-		while (e.hasMoreElements()) {
-			String name = (String) e.nextElement();
-			String[] values = request.getParameterValues(name);
-			for (String value : values) {
-				System.out.println("name=" + name + ",value=" + value);
-			}
-		}
+	@PostMapping("/cart/pay")
+	public void orderSave(@RequestBody Map<String, Map<String, Object>> map) {
+		System.out.println(map.get("params").get("userTotalPrice"));
 		
+		Order order = new Order();
+		List<OrderItem> orderItems = new ArrayList<>();
+		
+//		order.setOrderTotalPrice(map.get("params"));
+//		int result = orderService.insertOrder();
 		
 	}
 }
