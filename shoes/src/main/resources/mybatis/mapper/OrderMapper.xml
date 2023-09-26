@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.market.shoes.model.dao.OrderMapper">
+	
+	<insert id="insertOrder" useGeneratedKeys="true" keyProperty="orderNo">
+		INSERT INTO ORDERS
+		VALUES( DEFAULT
+				, CURDATE()
+				, #{userNo}
+				, #{orderTotalPrice}
+		)
+	</insert>
+	
+	<insert id="insertOrderItem" useGeneratedKeys="true" keyProperty="orderItemNo">
+		INSERT INTO ORDER_ITEM(ORDER_ITEM_NO, COUNT, ORDER_PRICE, ORDER_NO, ITEM_NO, SIZE)
+		VALUES
+		<foreach collection="list" item="item" separator=",">
+			( 	   default
+				 , #{item.count}
+ 				 , (SELECT #{item.count}*PRICE FROM ITEM WHERE ITEM_NO = #{item.itemNo})
+				 , #{item.orderNo}
+				 , #{item.itemNo}
+				 , #{item.size}
+				)
+		</foreach> 
+	</insert>
+	
+	<delete id="deleteCart">
+		DELETE FROM CART
+		<where>
+			<foreach collection="list" item="item" open="" close="" separator="OR">
+				MEMBER_NO = #{item.userNo}
+				AND ITEM_NO = #{item.itemNo}
+				AND SIZE = #{item.size}
+	  		</foreach>
+		</where>
+	</delete>
+
+	<update id="updateStock">
+		UPDATE STOCK
+		SET STOCK = STOCK - #{count}
+		WHERE #{itemNo} AND #{size}
+	</update>
+	
+</mapper>

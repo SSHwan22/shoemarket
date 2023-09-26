@@ -1,5 +1,11 @@
 package com.market.shoes.model.service.order;
 
-public class OrderService {
+import java.util.Map;
+
+import com.market.shoes.model.vo.Order;
+
+public interface OrderService {
+
+	int insertOrder(Order order);
 
 }

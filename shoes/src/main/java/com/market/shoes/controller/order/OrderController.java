@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.market.shoes.model.service.order.OrderService;
+import com.market.shoes.model.vo.Member;
 import com.market.shoes.model.vo.Order;
 import com.market.shoes.model.vo.OrderItem;
 
@@ -19,17 +20,19 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderController {
 
-	private OrderService orderService;
+	private final OrderService orderService;
 	
 	@PostMapping("/cart/pay")
-	public void orderSave(@RequestBody Map<String, Map<String, Object>> map) {
-		System.out.println(map.get("params").get("userTotalPrice"));
+	public String orderSave(@RequestBody Order order) {
 		
-		Order order = new Order();
-		List<OrderItem> orderItems = new ArrayList<>();
+		int result = orderService.insertOrder(order);
 		
-//		order.setOrderTotalPrice(map.get("params"));
-//		int result = orderService.insertOrder();
+		
+		if(result>0) {
+			return "구매 성공";
+		}else {
+			return "구매 실패";
+		}
 		
 	}
 }

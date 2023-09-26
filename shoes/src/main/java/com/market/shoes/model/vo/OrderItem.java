@@ -9,4 +9,6 @@ public class OrderItem {
 	private int orderPrice;
 	private int orderNo;
 	private int itemNo;
+	private int Size;
+	private int userNo;
 }
